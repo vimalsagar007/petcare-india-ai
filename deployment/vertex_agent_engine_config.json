@@ -1,0 +1,25 @@
+{
+  "agent_name": "PetCareCoordinatorAgent",
+  "display_name": "PETCARE INDIA AI Agent Engine",
+  "description": "Production Agentic AI Assistant for Veterinary Care & Animal Care in India",
+  "orchestrator_model": "gemini-1.5-pro-002",
+  "sub_agents": [
+    "LocationDiscoveryAgent",
+    "DogVeterinaryAgent",
+    "CatVeterinaryAgent",
+    "AvianVeterinaryAgent",
+    "LivestockVeterinaryAgent",
+    "EmergencyVeterinaryAgent",
+    "GovernmentVeterinaryAgent",
+    "VeterinaryRAGAgent",
+    "NavigationAgent",
+    "ProviderVerificationAgent"
+  ],
+  "rag_corpus_id": "petcare_india_rag_v1",
+  "mcp_server_url": "http://localhost:8000/api/mcp",
+  "observability": {
+    "cloud_logging": true,
+    "cloud_trace": true,
+    "bigquery_analytics_table": "petcare_india_analytics.agent_traces"
+  }
+}

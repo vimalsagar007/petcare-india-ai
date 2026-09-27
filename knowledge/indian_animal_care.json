@@ -1,0 +1,92 @@
+[
+  {
+    "id": "rag_kb_001",
+    "title": "Emergency Signs in Dogs and Cats",
+    "content": "Emergency symptoms requiring immediate veterinary intervention include: severe arterial bleeding, severe difficulty breathing (dyspnea/open-mouth breathing in cats), collapse or inability to stand, unresponsiveness or coma, severe abdominal distension/bloat (GDV suspicion in deep-chested dogs), continuous seizures lasting over 3 minutes, pale or blue gums, suspected toxic ingestion (rat poison, chocolate, insecticides), severe dehydration, and prolonged labor (>2 hours between puppies/kittens). Keep the animal warm, calm, and wrapped in a clean blanket during transport to the nearest 24/7 veterinary hospital.",
+    "metadata": {
+      "animal_type": "Dog, Cat",
+      "topic": "Animal emergency signs",
+      "language": "English",
+      "source": "Indian Council of Agricultural Research (ICAR) & Animal Welfare Board of India",
+      "source_date": "2025-01-15",
+      "authority": "ICAR Veterinary Division",
+      "region": "India",
+      "severity": "Emergency"
+    }
+  },
+  {
+    "id": "rag_kb_002",
+    "title": "Cattle and Buffalo Anorexia & Digestive Care",
+    "content": "Loss of appetite (anorexia) or indigestion (off-feed) in dairy cattle and buffaloes in India can stem from ruminal acidosis (excess green fodder/grain intake), bloat (tympanites), parasitic load, or foot-and-mouth disease (FMD). First aid measures: Provide clean fresh water, feed dry wheat/paddy straw, offer jaggery water with mineral mixture, and immediately consult a local Pashu Vaidya or Government Veterinary Hospital for rumen fluid analysis. Do not administer human painkillers or antibiotics without veterinary prescription.",
+    "metadata": {
+      "animal_type": "Cow, Buffalo",
+      "topic": "Cattle care, Common symptoms",
+      "language": "English, Hindi, Telugu",
+      "source": "Department of Animal Husbandry & Dairying (DAHD), Govt of India",
+      "source_date": "2024-11-10",
+      "authority": "National Dairy Development Board (NDDB)",
+      "region": "India",
+      "severity": "Urgent"
+    }
+  },
+  {
+    "id": "rag_kb_003",
+    "title": "Avian Injury & Emergency Respiratory Protocol",
+    "content": "In injured or sick pet birds (parrots, pigeons, budgies, poultry): Watch for fluffed feathers, sitting on the cage floor, tail bobbing while breathing, bleeding from blood quills or beak, or wing drooping. Keep the bird in a warm, dark, quiet box lined with paper towels (28-30°C). Apply gentle direct pressure with clean cotton for bleeding. Transport immediately to an Avian Specialist Veterinarian. Never use human ointment on bird feathers.",
+    "metadata": {
+      "animal_type": "Bird, Poultry",
+      "topic": "Bird care, First aid",
+      "language": "English",
+      "source": "Avian Veterinary Society of India Guidelines",
+      "source_date": "2024-08-20",
+      "authority": "Indian Avian Health Network",
+      "region": "India",
+      "severity": "Urgent"
+    }
+  },
+  {
+    "id": "rag_kb_004",
+    "title": "Vaccination Schedule for Dogs in India",
+    "content": "Core vaccines for puppies in India: 6-8 weeks: DHPPi+L (Distemper, Hepatitis, Parvovirus, Parainfluenza, Leptospirosis) 1st dose; 10-12 weeks: 2nd booster; 14-16 weeks: 3rd booster + Rabies (Anti-Rabies Vaccine). Annual boosters required: 7-in-1 / 9-in-1 combo vaccine and Anti-Rabies vaccine. Rabies vaccination is mandatory under Indian law (Prevention of Cruelty to Animals Act).",
+    "metadata": {
+      "animal_type": "Dog",
+      "topic": "Vaccination, Dog care",
+      "language": "English",
+      "source": "Indian Veterinary Association (IVA) Guidelines",
+      "source_date": "2025-02-01",
+      "authority": "Indian Veterinary Association",
+      "region": "India",
+      "severity": "Normal"
+    }
+  },
+  {
+    "id": "rag_kb_005",
+    "title": "Goat and Sheep Vaccination & Deworming in India",
+    "content": "Small ruminants (Goats and Sheep) in India require vaccination against PPR (Peste des Petits Ruminants), Enterotoxaemia (ET), Foot and Mouth Disease (FMD), and Goat Pox. Deworming should be performed biannually before monsoons (May-June) and post-monsoon (October-November) using broad-spectrum antihelmintics under veterinary supervision.",
+    "metadata": {
+      "animal_type": "Goat, Sheep",
+      "topic": "Goat care, Sheep care, Parasite prevention",
+      "language": "English, Telugu, Tamil",
+      "source": "Central Sheep and Wool Research Institute (CSWRI)",
+      "source_date": "2024-09-05",
+      "authority": "ICAR-CSWRI Avikanagar",
+      "region": "India",
+      "severity": "Normal"
+    }
+  },
+  {
+    "id": "rag_kb_006",
+    "title": "Dog Vomiting & Dehydration First Aid",
+    "content": "Repeated vomiting in dogs can be caused by dietary indiscretion, gastroenteritis, viral infections (Parvovirus), or ingestion of toxic plants/foreign bodies. Immediate steps: Withhold food for 6-8 hours while providing small licks of fresh water or ORS solution. If vomiting continues for more than 12-24 hours, or if blood/bile is present, or accompanied by lethargy, seek immediate evaluation at a pet clinic or veterinary hospital.",
+    "metadata": {
+      "animal_type": "Dog",
+      "topic": "Common symptoms, First aid",
+      "language": "English, Telugu, Hindi",
+      "source": "Pet Health Advisory Council India",
+      "source_date": "2025-01-20",
+      "authority": "Pet Health Council India",
+      "region": "India",
+      "severity": "Urgent"
+    }
+  }
+]

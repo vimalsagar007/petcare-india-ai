@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PETCARE INDIA AI - Intelligent Veterinary & Animal Care Assistant</title>
+  <meta name="description" content="Find trusted nearby veterinary hospitals, emergency animal care, government veterinary dispensaries, and animal ambulances across India.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand-container">
+      <span class="brand-logo">🐾</span>
+      <div>
+        <h1 class="brand-title">PETCARE INDIA AI</h1>
+        <p class="brand-subtitle">Find trusted veterinary care for every animal, anywhere in India.</p>
+      </div>
+    </div>
+    
+    <div class="top-controls">
+      <select id="language-select" class="select-custom" onchange="onLanguageChange()">
+        <option value="English">🌐 English</option>
+        <option value="Telugu">తెలుగు (Telugu)</option>
+        <option value="Hindi">हिंदी (Hindi)</option>
+        <option value="Tamil">தமிழ் (Tamil)</option>
+        <option value="Kannada">ಕನ್ನಡ (Kannada)</option>
+        <option value="Malayalam">മലയാളം (Malayalam)</option>
+        <option value="Marathi">मराठी (Marathi)</option>
+        <option value="Bengali">বাংলা (Bengali)</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Primary Action Bar -->
+  <nav class="action-bar">
+    <button class="action-btn active" onclick="selectAction('hospital')">🏥 Find Vet Hospital</button>
+    <button class="action-btn" onclick="selectAction('doctor')">👨‍⚕️ Find Nearby Vet</button>
+    <button class="action-btn emergency" onclick="selectAction('emergency')">🚨 Emergency Care</button>
+    <button class="action-btn" onclick="selectAction('government')">🏛️ Govt Vet Hospital</button>
+    <button class="action-btn" onclick="selectAction('pharmacy')">💊 Pet Pharmacy</button>
+    <button class="action-btn" onclick="selectAction('diagnostics')">🧪 Diagnostics</button>
+    <button class="action-btn" onclick="selectAction('ambulance')">🚑 Animal Ambulance</button>
+    <button class="action-btn" onclick="selectAction('ask_ai')">🤖 Ask Veterinary AI</button>
+    <button class="action-btn" onclick="selectAction('my_pets')">🐾 My Pets</button>
+  </nav>
+
+  <!-- Search & Filter Controls -->
+  <section class="search-filter-section">
+    <div class="filter-group">
+      <label for="animal-select">Select Animal Species</label>
+      <select id="animal-select" class="select-custom" onchange="triggerSearch()">
+        <option value="Dog">🐶 Dog</option>
+        <option value="Cat">🐱 Cat</option>
+        <option value="Bird">🦜 Bird</option>
+        <option value="Cow">🐄 Cow</option>
+        <option value="Buffalo">🐃 Buffalo</option>
+        <option value="Goat">🐐 Goat</option>
+        <option value="Sheep">🐑 Sheep</option>
+        <option value="Horse">🐎 Horse</option>
+        <option value="Rabbit">🐰 Rabbit</option>
+        <option value="Poultry">🐓 Poultry</option>
+        <option value="Other">🐾 Other</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="location-input">Location (City/Area/Pincode)</label>
+      <div style="display: flex; gap: 0.5rem;">
+        <input type="text" id="location-input" class="input-custom" placeholder="e.g. Hyderabad, Guntur, Bengaluru..." value="Hyderabad">
+        <button class="select-custom" onclick="useBrowserLocation()" title="Use Current GPS Location">📍</button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label for="radius-select">Search Radius</label>
+      <select id="radius-select" class="select-custom" onchange="triggerSearch()">
+        <option value="1">1 km</option>
+        <option value="3">3 km</option>
+        <option value="5">5 km</option>
+        <option value="10" selected>10 km</option>
+        <option value="25">25 km</option>
+        <option value="50">50 km</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="urgency-select">Urgency Level</label>
+      <select id="urgency-select" class="select-custom" onchange="triggerSearch()">
+        <option value="Normal">🟢 Normal</option>
+        <option value="Urgent">🟡 Urgent</option>
+        <option value="Emergency">🔴 Emergency (24/7)</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="main-container">
+    
+    <!-- Left Pane: Map & Provider List -->
+    <section>
+      <!-- Emergency Warning Banner -->
+      <div id="emergency-banner" class="emergency-banner" style="display: none;">
+        <span>🚨</span>
+        <div id="emergency-banner-text">EMERGENCY: Seek veterinary care immediately at the nearest 24/7 reported facility.</div>
+      </div>
+
+      <!-- Controls Header -->
+      <div class="provider-header">
+        <h2 id="section-title" style="font-size: 1.2rem; font-weight: 700;">Nearby Veterinary Facilities</h2>
+        <div class="view-toggle">
+          <button id="btn-toggle-map" class="action-btn active" onclick="toggleView('map')">🗺️ Map View</button>
+          <button id="btn-toggle-list" class="action-btn" onclick="toggleView('list')">📋 List View</button>
+        </div>
+      </div>
+
+      <!-- Interactive Map View -->
+      <div id="map-container" class="map-container">
+        <div id="map" style="width: 100%; height: 100%;"></div>
+      </div>
+
+      <!-- Provider Cards Grid -->
+      <div id="provider-cards" class="provider-grid"></div>
+
+      <!-- My Pets Manager (Hidden by default) -->
+      <div id="pets-tab" style="display: none; background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+        <h3 style="margin-bottom: 1rem; color: var(--accent-teal);">My Registered Pets & Livestock</h3>
+        <div id="pets-list"></div>
+      </div>
+    </section>
+
+    <!-- Right Pane: Veterinary AI Chat Drawer -->
+    <aside class="chat-drawer">
+      <div class="chat-header">
+        <span>🤖</span>
+        <span>Veterinary AI Assistant</span>
+        <span style="margin-left: auto; font-size: 0.75rem; background: rgba(0,242,254,0.15); color: var(--accent-teal); padding: 0.2rem 0.5rem; border-radius: 12px;">Gemini + RAG</span>
+      </div>
+
+      <div id="chat-messages" class="chat-messages">
+        <div class="message-bubble assistant">
+          Hello! I am your <strong>PetCare India AI Assistant</strong>. Select your animal species, location, or ask me any health and veterinary care question!
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" class="input-custom" style="flex: 1;" placeholder="Ask AI a question or symptom..." onkeypress="handleKeyPress(event)">
+        <button class="action-btn active" onclick="sendChatMessage()">Send</button>
+      </div>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/static/js/map_component.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
