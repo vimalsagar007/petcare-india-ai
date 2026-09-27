@@ -20,22 +20,16 @@ PETCARE INDIA AI is a production-grade, India-focused Agentic AI application des
 
 ---
 
-## 🌐 Live Production Application
-- **Cloud Run URL**: [https://petcare-india-ai-53233290213.us-central1.run.app](https://petcare-india-ai-53233290213.us-central1.run.app)
-- **GitHub Repository**: [https://github.com/vimalsagar007/petcare-india-ai](https://github.com/vimalsagar007/petcare-india-ai)
-
----
-
 ## 🏛️ System Architecture
 
 PETCARE INDIA AI combines 10 major Agentic AI pillars:
 
 1. **Gemini Orchestrator**: Root reasoning engine interpreting user intent, species, service, location, and urgency.
 2. **Google ADK Framework**: Modular agent architecture featuring `PetCareCoordinatorAgent`.
-3. **Vertex AI Agent Engine & Cloud Run Deployment**: Production runtime configuration and container deployment specs.
+3. **Vertex AI Agent Engine & Cloud Run Deployment**: Production runtime configuration (`deployment/vertex_agent_engine_config.json`) and automated deployment script (`deployment/deploy_cloud_run.sh`).
 4. **Google Maps Platform Places API (New)**: Real-time dynamic search for `veterinary hospital`, `Pashu Chikitsalayam`, `government veterinary hospital`, `pet clinic`, and `animal ambulance` with Place ID as canonical key.
 5. **Google Routes & Distance Client**: Geocoding across all major Indian cities (*Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Guntur, Vijayawada, Jaipur, Pune, Lucknow, etc.*), Haversine distance calculations, and turn-by-turn navigation deep-links.
-6. **Vertex AI RAG Knowledge Pipeline**: Metadata-filtered (`animal_type`, `topic`, `language`, `severity`) knowledge retriever covering 11 animal species.
+6. **Vertex AI RAG Knowledge Pipeline**: Metadata-filtered (`animal_type`, `topic`, `language`, `severity`) knowledge retriever covering 11 animal species with ICAR/DAHD recommendations and polite denial fallbacks.
 7. **MCP (Model Context Protocol)**: 18 standard tools returning non-hallucinated, structured JSON records.
 8. **A2A Multi-Agent Architecture**: Inter-agent messaging between 10 specialized sub-agents (`LocationDiscoveryAgent`, `DogVeterinaryAgent`, `CatVeterinaryAgent`, `AvianVeterinaryAgent`, `LivestockVeterinaryAgent`, `EmergencyVeterinaryAgent`, `GovernmentVeterinaryAgent`, `VeterinaryRAGAgent`, `NavigationAgent`, `ProviderVerificationAgent`).
 9. **Medical Safety Guardrails**: Triage classifier enforcing non-diagnostic medical phrasing ("Possible causes include...", "A veterinarian should evaluate...").
@@ -59,7 +53,24 @@ pip install -r requirements.txt
 make dev
 # Or: python3 -m app.main
 ```
-Open your browser at [http://localhost:8000](http://localhost:8000)
+Open your browser at `http://localhost:8000`
+
+---
+
+## 📦 Deploying to Google Cloud Run
+
+To deploy the application to your own Google Cloud project:
+
+```bash
+chmod +x deployment/deploy_cloud_run.sh
+./deployment/deploy_cloud_run.sh
+```
+
+Or via Docker:
+```bash
+make build
+make run
+```
 
 ---
 
