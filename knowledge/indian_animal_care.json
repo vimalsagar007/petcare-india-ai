@@ -16,11 +16,11 @@
   },
   {
     "id": "rag_kb_002",
-    "title": "Cattle and Buffalo Anorexia & Digestive Care",
-    "content": "Loss of appetite (anorexia) or indigestion (off-feed) in dairy cattle and buffaloes in India can stem from ruminal acidosis (excess green fodder/grain intake), bloat (tympanites), parasitic load, or foot-and-mouth disease (FMD). First aid measures: Provide clean fresh water, feed dry wheat/paddy straw, offer jaggery water with mineral mixture, and immediately consult a local Pashu Vaidya or Government Veterinary Hospital for rumen fluid analysis. Do not administer human painkillers or antibiotics without veterinary prescription.",
+    "title": "Cattle and Buffalo Anorexia, Bloat & Digestive Care",
+    "content": "Loss of appetite (anorexia), bloat (tympanites), or indigestion (off-feed) in dairy cattle and buffaloes in India can stem from ruminal acidosis (excess green fodder/grain intake), bloat, parasitic load, or foot-and-mouth disease (FMD). First aid measures for bloat: Keep cattle walking, position animal with head elevated, administer 100-200 ml of vegetable oil (mustard/linseed oil) mixed with 10-15g of asafoetida (hing) under veterinary direction. Provide clean fresh water, feed dry wheat/paddy straw, offer jaggery water with mineral mixture, and immediately consult a local Pashu Vaidya or Government Veterinary Hospital for trocarization or rumen fluid analysis if severe distress occurs. Do not administer human painkillers or antibiotics without veterinary prescription.",
     "metadata": {
       "animal_type": "Cow, Buffalo",
-      "topic": "Cattle care, Common symptoms",
+      "topic": "Cattle care, Common symptoms, Bloat",
       "language": "English, Hindi, Telugu",
       "source": "Department of Animal Husbandry & Dairying (DAHD), Govt of India",
       "source_date": "2024-11-10",
@@ -32,7 +32,7 @@
   {
     "id": "rag_kb_003",
     "title": "Avian Injury & Emergency Respiratory Protocol",
-    "content": "In injured or sick pet birds (parrots, pigeons, budgies, poultry): Watch for fluffed feathers, sitting on the cage floor, tail bobbing while breathing, bleeding from blood quills or beak, or wing drooping. Keep the bird in a warm, dark, quiet box lined with paper towels (28-30°C). Apply gentle direct pressure with clean cotton for bleeding. Transport immediately to an Avian Specialist Veterinarian. Never use human ointment on bird feathers.",
+    "content": "In injured or sick pet birds (parrots, pigeons, budgies, poultry): Watch for fluffed feathers, sitting on the cage floor, tail bobbing while breathing, bleeding from blood quills or beak, or wing drooping. Keep the bird in a warm, dark, quiet box lined with paper towels (28-30°C). Apply gentle direct pressure with clean cotton for bleeding. Transport immediately to an Avian Specialist Veterinarian. Never use human ointment or spray on bird feathers.",
     "metadata": {
       "animal_type": "Bird, Poultry",
       "topic": "Bird care, First aid",
@@ -85,6 +85,36 @@
       "source": "Pet Health Advisory Council India",
       "source_date": "2025-01-20",
       "authority": "Pet Health Council India",
+      "region": "India",
+      "severity": "Urgent"
+    }
+  },
+  {
+    "id": "rag_kb_007",
+    "title": "Heat Stroke Management in Pets & Livestock during Indian Summers",
+    "content": "Heat stroke occurs commonly during peak summer months (April-June) in India. Symptoms include excessive panting, bright red or pale gums, thick drool, weakness, unsteadiness, or collapse. First aid: Move animal immediately to a shaded, well-ventilated room or under fan/AC. Cool body gradually by pouring ambient water (NOT ice water) over feet, groin, and chest. Offer cool drinking water in small quantities. Do not wrap tightly in wet towels as it traps heat. Transport immediately to a veterinary clinic for IV fluid therapy.",
+    "metadata": {
+      "animal_type": "Dog, Cat, Cow, Buffalo, Horse",
+      "topic": "Heat stroke, Summer care",
+      "language": "English, Hindi, Telugu",
+      "source": "Indian Veterinary Association Summer Emergency Advisory",
+      "source_date": "2025-03-01",
+      "authority": "Indian Veterinary Association",
+      "region": "India",
+      "severity": "Emergency"
+    }
+  },
+  {
+    "id": "rag_kb_008",
+    "title": "Tick Fever & Vector-Borne Disease Prevention in Dogs",
+    "content": "Tick fever (Ehrlichiosis, Babesiosis, Anaplasmosis) is transmitted by brown dog ticks across India. Symptoms: High fever, lethargy, loss of appetite, pale gums, blood in urine or nose bleeding. Prevention: Monthly topical spot-on treatments (Fipronil/Permethrin), oral chewables (Fluralaner/Afoxolaner), regular grooming, and keeping sleeping quarters clean. Diagnostic blood smear and PCR tests should be performed at a veterinary diagnostic center.",
+    "metadata": {
+      "animal_type": "Dog",
+      "topic": "Tick fever, Parasite control",
+      "language": "English",
+      "source": "Indian Journal of Veterinary Medicine Guidelines",
+      "source_date": "2024-12-15",
+      "authority": "Indian Society for Veterinary Medicine",
       "region": "India",
       "severity": "Urgent"
     }
