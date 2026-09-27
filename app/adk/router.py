@@ -79,8 +79,8 @@ class RouterLogic:
             "urgency": urgency,
             "is_emergency": is_emergency,
             "category": category,
-            "latitude": coords.latitude,
-            "longitude": coords.longitude,
+            "latitude": coords[0],
+            "longitude": coords[1],
             "needs_maps": needs_maps,
             "needs_rag": needs_rag
         }
