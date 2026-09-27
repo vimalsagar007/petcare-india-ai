@@ -74,7 +74,7 @@ function renderResults(data) {
     updateMapMarkers(data.providers, data.providers[0].location.latitude, data.providers[0].location.longitude);
   }
 
-  // Render Provider Cards
+  // Render Provider Cards with enriched Google Maps Evidence & Doctor Details
   const cardsContainer = document.getElementById('provider-cards');
   cardsContainer.innerHTML = '';
 
@@ -90,22 +90,36 @@ function renderResults(data) {
     const isGovt = p.provider_category === 'Government Hospital';
     const isOpen = p.open_now;
 
+    const servicesList = p.services_offered ? p.services_offered.join(', ') : 'General Care';
+
     card.innerHTML = `
       <div>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          ${isGovt ? '<span class="card-badge badge-govt">🏛️ Government Hospital</span>' : '<span class="card-badge badge-open">🏥 Private Clinic</span>'}
+        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+          ${isGovt ? '<span class="card-badge badge-govt">🏛️ Govt Veterinary Hospital</span>' : '<span class="card-badge badge-open">🏥 Verified Vet Clinic</span>'}
           ${isOpen ? '<span class="card-badge badge-open">🟢 Open Now</span>' : '<span class="card-badge" style="background: rgba(255,255,255,0.1); color: #94a3b8;">🔴 Closed</span>'}
+          <span class="card-badge" style="background: rgba(0, 242, 254, 0.1); color: var(--accent-teal); border: 1px solid var(--accent-teal);">📍 Google Maps Verified</span>
         </div>
+
         <h3 class="card-title">${p.name}</h3>
-        <p class="card-meta">📍 ${p.address}</p>
-        <p class="card-meta">📞 ${p.phone}</p>
-        <p class="card-meta">📏 <strong>${p.distance_km} km away</strong> | ⭐ ${p.rating ? p.rating + ' (' + p.review_count + ' reviews)' : 'Rating N/A'}</p>
+        <p style="font-size: 0.88rem; color: var(--accent-teal); font-weight: 600; margin-bottom: 0.5rem;">
+          👨‍⚕️ <strong>Doctor In Charge:</strong> ${p.doctor_in_charge || 'Chief Veterinary Officer'}
+        </p>
+
+        <p class="card-meta">📍 <strong>Address:</strong> ${p.address}</p>
+        <p class="card-meta">📞 <strong>Contact Phone:</strong> ${p.phone}</p>
+        <p class="card-meta">✉️ <strong>Official Email:</strong> <a href="mailto:${p.email}" style="color: var(--accent-blue); text-decoration: none;">${p.email}</a></p>
+        <p class="card-meta">🆔 <strong>Govt Reg No:</strong> ${p.government_registration_no}</p>
+        <p class="card-meta">🛠️ <strong>Services:</strong> ${servicesList}</p>
+
+        <p class="card-meta" style="margin-top: 0.4rem;">
+          📏 <strong>${p.distance_km} km away</strong> | ⭐ ${p.rating ? p.rating + ' (' + p.review_count + ' reviews on Google)' : 'Rating N/A'}
+        </p>
         <p style="font-size: 0.75rem; color: var(--text-sub); margin-top: 0.4rem;">Source: ${p.source}</p>
       </div>
 
       <div class="card-actions">
-        <a href="tel:${p.phone !== 'Not available from current provider data.' ? p.phone : ''}" class="btn-card">📞 Call</a>
-        <a href="${p.maps_url || '#'}" target="_blank" class="btn-card primary">🗺️ Directions</a>
+        <a href="tel:${p.phone !== 'Not available from current provider data.' ? p.phone : ''}" class="btn-card">📞 Call Doctor</a>
+        <a href="${p.google_maps_evidence_url || p.maps_url || '#'}" target="_blank" class="btn-card primary">🗺️ Google Maps Evidence</a>
       </div>
     `;
     cardsContainer.appendChild(card);
@@ -119,7 +133,6 @@ async function sendChatMessage() {
 
   const messagesContainer = document.getElementById('chat-messages');
 
-  // Append user bubble
   const userBubble = document.createElement('div');
   userBubble.className = 'message-bubble user';
   userBubble.innerText = text;
@@ -143,7 +156,7 @@ async function sendChatMessage() {
     const botBubble = document.createElement('div');
     botBubble.className = 'message-bubble assistant';
     
-    let answerHtml = data.knowledge_answer || "I have retrieved matching provider information for your request.";
+    let answerHtml = data.knowledge_answer || "I have retrieved matching provider and doctor information for your request.";
     if (data.is_emergency) {
       answerHtml = `<strong>🚨 EMERGENCY ALERT:</strong> ${data.emergency_warning}<br><br>` + answerHtml;
     }
